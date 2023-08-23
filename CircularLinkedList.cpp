@@ -42,6 +42,29 @@ void display2(Node* head) {
     } while (temp!=head);
 }
 
+Node* insertFirst1(Node* head, int data) {
+    Node* nNode = new Node(data);
+    Node* temp = head;
+    if (temp==NULL) {
+        nNode->next = nNode;
+        return nNode;
+    }
+    else {
+        nNode->next = temp->next;
+        temp->next = nNode;
+        //swap(temp->data, nNode->data);
+        int tempData = temp->data;
+        temp->data = nNode->data;
+        nNode->data = tempData;
+        return head;
+    }
+
+}
+
+void insertFirst2(Node* head) {
+
+}
+
 int main()
 {
     Node* head = new Node(10);
@@ -54,7 +77,12 @@ int main()
     display1(head);
     cout << "-------" << endl;
     display2(head);
+    int data = 34;
+    head = insertFirst1(head,data);
     cout << "-------" << endl;
+    head = insertFirst2(head, data);
+    cout << "-------" << endl;
+    display2(head);
     return 0;
 
 }
