@@ -61,8 +61,21 @@ Node* insertFirst1(Node* head, int data) {
 
 }
 
-void insertFirst2(Node* head) {
-
+Node* insertFirst2(Node* head, int data) {
+    struct Node* temp = head;
+    struct Node* nn = new Node(data);
+    if (head==NULL) {
+        nn->next = nn;
+        return nn;
+    }
+    else {
+        while (temp->next!=head) {
+            temp = temp->next;
+        }
+        nn->next = temp->next;
+        temp->next = nn;
+        return nn;
+    }
 }
 
 int main()
@@ -79,7 +92,7 @@ int main()
     display2(head);
     int data = 34;
     head = insertFirst1(head,data);
-    cout << "-------" << endl;
+    data = 63;
     head = insertFirst2(head, data);
     cout << "-------" << endl;
     display2(head);
